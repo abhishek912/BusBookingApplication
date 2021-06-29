@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="CSS/bootstrap.css" />
+    <link rel="stylesheet" href="CSS/bootstrap.css.map" />
+    <link rel="stylesheet" href="CSS/index.css" />
+    <script type="text/javascript" src="Bootstrap/Scripts/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript" src="Bootstrap/Scripts/jquery.cookie.js"></script>
+    <title>About</title>
+</head>
+<body>
+    <div class="header">
+        <a href="https://localhost:44316/index.html" class="logo">Bus Booking System</a>
+        <div class="header-left" id="header-left">
+            <a href="https://localhost:44316/index.html" id="home">Home</a>
+            <a class=active href="https://localhost:44316/About.html">About</a>
+        </div>
+
+        <div class="header-right" id="header-right">
+        </div>
+    </div>
+
+    <div style="margin-left:3%; margin-top:1%;">
+        Nagarro India Pvt. Ltd.<br />
+        Gurugram, Haryana 98052-6399<br />
+        <abbr title="Phone">P:</abbr>
+        425.555.0100<br /><br/>
+
+        <strong>Customer-Support:</strong>   <a href="https://helpdesk.nagarro.com" target="_blank">helpdesk.nagarro.com</a><br />
+    </div>
+
+</body>
+</html>
+
+<script>
+
+    if (document.cookie.indexOf("role") != -1 && $.cookie("role") != "") {
+        $("#header-left").append('<a href="https://localhost:44316/Booking/index.html">My Bookings</a>');
+        if ($.cookie('role') == "admin") {
+            $("#header-left").append('<a href="https://localhost:44316/BSP/index.html">Admin</a>');
+        }
+        $("#header-left").append('<label style="margin-left:350px; margin-top:12px;"><b>Hi, ' + $.cookie("fullName") + '</b></label>');
+        $("#header-right").append('<a href="https://localhost:44316/index.html" id=logout onclick=Logout()>Logout</a>');
+    } else {
+        $("#header-right").append('<a href=https://localhost:44316/Account/Login.html id=login>LogIn</a>');
+    }
+
+    function Logout() {
+        //alert("logout");
+        $.cookie('role', "", { path: '/' });
+        $.cookie('userId', "", { path: '/' });
+        //$.cookie('token', "");
+        window.location.href = "https://localhost:44316/index.html";
+    }
+</script>

@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="CSS/bootstrap.css" />
+    <link rel="stylesheet" href="CSS/bootstrap.css.map" />
+    <link rel="stylesheet" href="CSS/index.css" />
+    <script type="text/javascript" src="Bootstrap/Scripts/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript" src="Bootstrap/Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="Javascript/index.js"></script>
+
+    <title>Home</title>
+</head>
+<body>
+    <div class="header">
+        <a href="https://localhost:44316/index.html" class="logo">Bus Booking System</a>
+        <div class="header-left" id="header-left">
+            <a class="active" href="https://localhost:44316/index.html" id="home">Home</a>
+            <a href="https://localhost:44316/About.html">About</a>
+        </div>
+
+        <div class="header-right" id="header-right">
+        </div>
+    </div>
+
+    <div class="search-div" style="margin-top:20px;">
+        <label id="source-label" style="padding-left:15px;">Source : </label>
+        <input type="text" id="source" placeholder="Source" />
+
+        <label id="destination-label" style="padding-left:20px;">Destination : </label>
+        <input type="text" id="destination" placeholder="Destination" />
+
+        <label id="date-label" style="padding-left:20px;">Travel Date : </label>
+        <input type="date" id="travel-date">
+
+        <label id="time-label" style="padding-left:20px;">Time : </label>
+        <input type="time" id="travel-time">
+
+        <label id="timezone-label" style="padding-left:20px;">Select Time Type : </label>
+        <select id="timetype">
+            <option value="departuretime">Departure</option>
+            <option value="arrivaltime">Arrival</option>
+        </select><br />
+
+        <div class="search-button" style="margin-left:45%; margin-top:20px;">
+            <input type="button" id="search" value="Search Bus" onclick="SearchBus()" />
+        </div>
+    </div>
+
+
+    <div class="bus-table" style="margin-top:20px;">
+        <table class="search-result table table-striped table-bordered table-responsive-lg" id="search-result-table">
+            <tr>
+                <th>S.No.</th>
+                <th>Bus Name</th>
+                <th>Source</th>
+                <th>Departure Time</th>
+                <th>Destination</th>
+                <th>Arrival Time</th>
+                <th>Fare</th>
+                <th>Available Seats</th>
+                <th>Book</th>
+            </tr>
+            <tbody id="search-result-table-body"></tbody>
+        </table>
+    </div>
+
+
+
+    <div class="footer">
+        <label><h4>&copy;Abhishek Sharma</h4></label>
+        <h6 style="padding-left:20px; margin-top:-20px;">Nagarro Consultant Pvt. Ltd.</h6>
+    </div>
+</body>
+</html>
+
+<script>
+    var n = new Date();
+    var y = n.getFullYear();
+    var m = n.getMonth() + 1;
+    var d = n.getDate();
+    var date = y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d);
+    document.getElementById("travel-date").min = date;
+
+    //alert(document.cookie.indexOf("role") == -1);
+    if (document.cookie.indexOf("role") != -1 && $.cookie("role") != "") {
+        $("#header-left").append('<a href="https://localhost:44316/Booking/index.html">My Bookings</a>');
+        if ($.cookie('role') == "admin") {
+            $("#header-left").append('<a href="https://localhost:44316/BSP/index.html">Admin</a>');
+        }
+        $("#header-left").append('<label style="margin-left:350px; margin-top:12px;" id=fullName><b>' + "Hi, " + $.cookie("fullName") + '</b></label>');
+        $("#header-right").append('<a href="#logout" id=logout onclick=Logout()>Logout</a>');
+    } else {
+        $("#header-right").append('<a href=https://localhost:44316/Account/Login.html id=login>LogIn</a>');
+    }
+</script>

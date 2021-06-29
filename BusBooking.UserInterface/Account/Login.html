@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../CSS/bootstrap.css" />
+    <link rel="stylesheet" href="../CSS/bootstrap.css.map" />
+    <link rel="stylesheet" href="../CSS/index.css" />
+    <title>Login</title>
+    <script type="text/javascript" src="../Bootstrap/Scripts/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript" src="../Bootstrap/Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Javascript/Account/Login.js"></script>
+</head>
+<body>
+    <div style="width:400px; height:290px; margin-left:36%; margin-top:12%; background-color:#94CBFA;">
+        <h3 style="margin-left:38%; padding-top:20px;">Log In</h3>
+        <table class="table table-borderless" id="login-table" style="margin-left:30px;">
+            <tr>
+                <td>
+                    <label><b>Mobile</b></label>
+                </td>
+                <td>
+                    <input type="text" id="contact" placeholder="Enter Mobile Number"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label><b>Password</b></label>
+                </td>
+                <td>
+                    <input type="password" id="password" placeholder="Enter Password" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" id="login" value="Login" onclick="Authorize()" style="margin-left:35%" class="btn-primary"/><br />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <a href="https://localhost:44316/Account/Signup.html" style="margin-left:60px; color:darkblue;">New User? Create Account.</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../CSS/bootstrap.css" />
+    <link rel="stylesheet" href="../CSS/bootstrap.css.map" />
+    <link rel="stylesheet" href="../CSS/index.css" />
+    <script type="text/javascript" src="../Bootstrap/Scripts/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript" src="../Bootstrap/Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Javascript/BSP/Details.js"></script>
+    <title>Bus Details</title>
+    <script>
+        if (document.cookie.indexOf("role") != -1 && $.cookie("role") != "admin") {
+            window.location.href = "https://localhost:44316/PageNotFound.html";
+        }
+        LoadData();
+    </script>
+</head>
+<body>
+    <div class="header">
+        <a href="https://localhost:44316/index.html" class="logo">Bus Booking System</a>
+        <div class="header-left" id="header-left">
+            <a href="https://localhost:44316/index.html" id="home">Home</a>
+            <a href="https://localhost:44316/About.html">About</a>
+        </div>
+
+        <div class="header-right" id="header-right">
+        </div>
+    </div>
+
+    <div class="bus-data-div" style="margin-left:10%; margin-bottom:2%">
+        <table class="table table-borderless">
+            <thead><h3>BUS DETAILS</h3></thead>
+            <tr>
+                <td><label>Bus Number *</label></td>
+                <td>:</td>
+                <td>
+                    <input type="text" id="busNo" readonly onblur="ValidateBusNo()"/>
+                    <span id="busNoError" style="display: none; color: red; font-size: 10px;"></span>
+                </td>
+
+            </tr>
+            <tr>
+                <td><label>Bus Name/Operator Name *</label></td>
+                <td>:</td>
+                <td>
+                    <input type="text" id="busName" onblur="ValidateBusName()" readonly />
+                    <span id="busNameError" style="display: none; color: red; font-size: 10px;"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Source *</label></td>
+                <td>:</td>
+                <td>
+                    <input type="text" id="source" onblur="ValidateSource()" readonly/>
+                    <span id="sourceError" style="display: none; color: red; font-size: 10px;"></span>
+                </td>
+                <td><label>Departure Time *</label></td>
+                <td>:</td>
+                <td>
+                    <input type="time" id="deptTime" readonly/>
+                    <span id="deptTimeError" style="display: none; color: red; font-size: 10px;"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Destination *</label></td>
+                <td>:</td>
+                <td>
+                    <input type="text" id="destination" onblur="ValidateDestination()" readonly />
+                    <span id="destinationError" style="display: none; color: red; font-size: 10px;"></span>
+                </td>
+                <td><label>Arrival Time *</label></td>
+                <td>:</td>
+                <td>
+                    <input type="time" id="arrivalTime" readonly/>
+                    <span id="arrivalTimeError" style="display: none; color: red; font-size: 10px;"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Bus Fare *</label></td>
+                <td>:</td>
+                <td>
+                    <input type="number" id="fare" onblur="ValidateFare()" readonly/>
+                    <span id="fareError" style="display: none; color: red; font-size: 10px;"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Bus Maximum Capicity *</label></td>
+                <td>:</td>
+                <td>
+                    <input type="number" id="capacity" onblur="ValidateCapacity()" readonly/>
+                    <span id="capacityError" style="display: none; color: red; font-size: 10px;"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Bus Specification</label></td>
+                <td>:</td>
+                <td><textarea id="busSpecs" readonly placeholder="Short description type here..." style="width:300px; height:100px;"></textarea></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>
+                    <input type="button" value="EDIT" id="edit" onclick="EditBus()" class="bg-info"/>
+                    <input type="button" value="SAVE" id="save" onclick="SaveBus()" class="bg-success" disabled/>
+                    <input type="button" value="DELETE" id="delete" onclick="DeleteBus()" class="bg-danger" />
+                    <input type="button" value="CANCEL" id="cancel" onclick="CancelBus()" class="bg-success"/>
+                    <input type="button" value="Back" id="back" onclick="location.href = 'https://localhost:44316/BSP/index.html'" class="bg-info" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+
+<script>
+    if (document.cookie.indexOf("role") != -1 && $.cookie("role") != "") {
+        $("#header-left").append('<a href="https://localhost:44316/Booking/index.html">My Bookings</a>');
+        if ($.cookie('role') == "admin") {
+            $("#header-left").append('<a class = active href="https://localhost:44316/BSP/index.html">Admin</a>');
+        }
+        $("#header-left").append('<label style="margin-left:350px; margin-top:12px;"><b>Hi, ' + $.cookie("fullName") + '</b></label>');
+        $("#header-right").append('<a href="#logout" id=logout onclick=Logout()>Logout</a>');
+    } else {
+        window.location.href = "https://localhost:44316/Account/Login.html";
+    }
+
+    function Logout() {
+        //alert("logout");
+        $.cookie('role', "", { path: '/' });
+        $.cookie('userId', "", { path: '/' });
+        //$.cookie('token', "");
+        window.location.href = "https://localhost:44316/index.html";
+    }
+</script>

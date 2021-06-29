@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../CSS/bootstrap.css" />
+    <link rel="stylesheet" href="../CSS/index.css" />
+    <script type="text/javascript" src="../Bootstrap/Scripts/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript" src="../Bootstrap/Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Javascript/Booking/Details.js"></script>
+    <title>Booking Details</title>
+</head>
+<body>
+    <div class="header">
+        <a href="https://localhost:44316/index.html" class="logo">Bus Booking System</a>
+        <div class="header-left" id="header-left">
+            <a href="https://localhost:44316/index.html" id="home">Home</a>
+            <a href="https://localhost:44316/About.html">About</a>
+        </div>
+
+        <div class="header-right" id="header-right">
+        </div>
+    </div>
+
+    <div id="basic-details-div">
+        <div id="bookingStatus">
+
+        </div>
+        <table class="table table-borderless" id="basic-details-table">
+            <tr>
+                <td><label><b>Booking Id</b></label></td>
+                <td>:</td>
+                <td id="bookingId"></td>
+            </tr>
+            <tr>
+                <td><label><b>Booked By(Name)</b></label></td>
+                <td>:</td>
+                <td id="fullName"></td>
+            </tr>
+            <tr>
+                <td><label><b>Booked By(Contact)</b></label></td>
+                <td>:</td>
+                <td id="contact"></td>
+            </tr>
+            <tr>
+                <td><label><b>Booked By(Email)</b></label></td>
+                <td>:</td>
+                <td id="email"></td>
+            </tr>
+            <tr>
+                <td><label><b>Source(Departure Time)</b></label></td>
+                <td>:</td>
+                <td id="source"></td>
+            </tr>
+            <tr>
+                <td><label><b>Destination(Arrival Time)</b></label></td>
+                <td>:</td>
+                <td id="destination"></td>
+            </tr>
+            <tr>
+                <td><label><b>Travel Date</b></label></td>
+                <td>:</td>
+                <td id="travelDate"></td>
+            </tr>
+            <tr>
+                <td><label><b>Ticket Booked On(Date/Time)</b></label></td>
+                <td>:</td>
+                <td id="bookingDate"></td>
+            </tr>
+            <tr>
+                <td><label><b>Total Amount Paid(in Rs.)</b></label></td>
+                <td>:</td>
+                <td id="totalAmount"></td>
+            </tr>
+            <tr>
+                <td><label><b>Number Of Passengers</b></label></td>
+                <td>:</td>
+                <td id="noOfPsngrs"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="psngr-details-div">
+        <table id="psngr-details-table" class="table table-borderless table-striped">
+            <tr>
+                <th>S.No.</th>
+                <th>Passenger Name</th>
+                <th>Passenger Contact</th>
+                <th>Passenger Email</th>
+                <th>Passenger Age</th>
+            </tr>
+            <tbody id="psnger-details-table-body"></tbody>
+        </table>
+    </div>
+
+    <div style="margin-left:46%; padding-bottom:20px;">
+        <input type="button" value="Cancel Booking" class="btn-primary" id="cancel" onclick="CancelBooking()"/>
+    </div>
+</body>
+</html>
+
+<script>
+    if (document.cookie.indexOf("role") != -1 && $.cookie("role") != "") {
+        $("#header-left").append('<a class = active href="https://localhost:44316/Booking/index.html">My Bookings</a>');
+        if ($.cookie('role') == "admin") {
+            $("#header-left").append('<a href="https://localhost:44316/BSP/index.html">Admin</a>');
+        }
+        $("#header-left").append('<label style="margin-left:350px; margin-top:12px;"><b>Hi, ' + $.cookie("fullName") + '</b></label>');
+        $("#header-right").append('<a href="https://localhost:44316/index.html" id=logout onclick=Logout()>Logout</a>');
+    } else {
+        window.location.href = "https://localhost:44316/Account/Login.html";
+    }
+
+    LoadData();
+
+    function Logout() {
+        $.cookie('role', "", { path: '/' });
+        $.cookie('userId', "", { path: '/' });
+        //$.cookie('token', "");
+        window.location.href = "https://localhost:44316/index.html";
+    }
+</script>

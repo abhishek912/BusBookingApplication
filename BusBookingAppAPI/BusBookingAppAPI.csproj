@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>78162ca3-d215-47cc-884a-32de3c62f2a3</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BusBooking.Business.Authenticate\BusBooking.Business.Authenticate.csproj" />
+    <ProjectReference Include="..\BusBooking.Data.Context\BusBooking.Data.Context.csproj" />
+    <ProjectReference Include="..\BusBooking.Data.DAL\BusBooking.Data.DAL.csproj" />
+    <ProjectReference Include="..\BusBooking.Data.Models\BusBooking.Data.Models.csproj" />
+    <ProjectReference Include="..\BusBooking.Shared.DTO\BusBooking.Shared.DTO.csproj" />
+  </ItemGroup>
+
+</Project>
